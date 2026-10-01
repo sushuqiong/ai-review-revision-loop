@@ -1,0 +1,9 @@
+*.tmp
+*.bak
+__pycache__/
+*.pyc
+.DS_Store
+*.local.json
+anonymise_map.local.json
+*.local
+.env

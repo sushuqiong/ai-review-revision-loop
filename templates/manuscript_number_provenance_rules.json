@@ -1,0 +1,80 @@
+{
+  "_comment": "Starter rules for scripts/manuscript_number_provenance_check.py. Copy next to the manuscript, point 'path' entries at the FROZEN result tables of the current version, and keep 'stale' growing every revision round (each superseded number you fix belongs here so it can never silently return).",
+  "abstract_max_words": 300,
+  "abstract_must_not_cite": true,
+  "stale": [
+    "retained 7",
+    "retained 11",
+    "retained 18",
+    "573 tumour",
+    "190 OS events",
+    "12 hits",
+    "only six states",
+    "fully attenuated",
+    "carried entirely",
+    "was prospective",
+    "median empirical within-pair correlation is **0.99**"
+  ],
+  "required": [
+    "556 tumour samples",
+    "187 deaths",
+    "retained 17",
+    "21 of 170 states were composition-robust",
+    "0.87",
+    "no module passed",
+    "github.com/sushuqiong/egfr-pathway-context-atlas"
+  ],
+  "csv_counts": [
+    {
+      "name": "meta_bh_significant_REML_knha",
+      "path": "reruns/results/v11_meta_primary_reml_knha.csv",
+      "where": "k>=2 and fdr<0.05",
+      "group_by": "disease",
+      "expect": ["retained 17 "]
+    },
+    {
+      "name": "meta_bh_significant_DL_sensitivity",
+      "path": "reruns/results/v11_meta_DL.csv",
+      "where": "k>=2 and fdr<0.05",
+      "expect": ["{n} under DerSimonian-Laird"]
+    },
+    {
+      "name": "composition_robust_states",
+      "path": "reruns/results/v11_joint_summary.csv",
+      "where": "joint_robust==TRUE",
+      "group_by": "disease",
+      "expect": ["{n} of 170 states were composition-robust"]
+    },
+    {
+      "name": "single_cell_same_cell_type_significant",
+      "path": "reruns/results/sc_v11_patient_paired.csv",
+      "where": "fdr<0.05 and comparison_type==same-cell-type",
+      "group_by": "context",
+      "expect": ["{n} same-cell-type comparisons"]
+    },
+    {
+      "name": "single_cell_cell_identity_significant",
+      "path": "reruns/results/sc_v11_patient_paired.csv",
+      "where": "fdr<0.05 and comparison_type==cell-identity",
+      "expect": ["{n} labelled cell-identity contrasts"]
+    },
+    {
+      "name": "single_cell_paired_tests",
+      "path": "reruns/results/sc_v11_patient_paired.csv",
+      "where": "fdr<0.05 and contains:wilcoxon",
+      "expect": ["{n} paired"]
+    },
+    {
+      "name": "driver_tests_and_bh",
+      "path": "reruns/results/v11_driver_interactions.csv",
+      "where": "fdr_interaction<0.05",
+      "expect": ["none survived BH-FDR"]
+    },
+    {
+      "name": "mutation_prevalence_PAAD_KRAS",
+      "path": "reruns/results/v11_mutation_denominators.csv",
+      "where": "context==PAAD and gene==KRAS",
+      "expect": []
+    }
+  ]
+}

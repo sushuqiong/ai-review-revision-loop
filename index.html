@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Review-Revision Loop — Skill</title>
+<style>
+  :root { --bg:#fafafa; --card:#fff; --accent:#2563eb; --text:#1f2937; --muted:#6b7280; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+  header { background:linear-gradient(135deg,#1e3a8a,#2563eb); color:#fff; padding:60px 20px; text-align:center; }
+  header h1 { font-size:2.2em; margin-bottom:8px; }
+  header p { opacity:.9; max-width:720px; margin:0 auto; }
+  .badges { margin-top:14px; }
+  .badge { background:rgba(255,255,255,.2); border-radius:20px; padding:4px 14px; font-size:.85em; margin:0 4px; display:inline-block; }
+  main { max-width:900px; margin:0 auto; padding:40px 20px; }
+  h2 { color:var(--accent); margin:36px 0 14px; font-size:1.4em; border-bottom:2px solid #e5e7eb; padding-bottom:6px; }
+  .card { background:var(--card); border:1px solid #e5e7eb; border-radius:10px; padding:20px; margin:14px 0; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  .card h3 { margin-bottom:8px; color:#111827; }
+  ul { padding-left:22px; }
+  li { margin:6px 0; }
+  .step { display:flex; gap:16px; align-items:flex-start; }
+  .step-num { background:var(--accent); color:#fff; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-weight:700; flex-shrink:0; }
+  code { background:#f3f4f6; padding:2px 6px; border-radius:4px; font-size:.9em; color:#b91c1c; }
+  .warning { background:#fef3c7; border-left:4px solid #f59e0b; padding:14px 18px; border-radius:6px; margin:14px 0; }
+  footer { text-align:center; padding:40px 20px; color:var(--muted); font-size:.9em; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>📋 AI Review-Revision Loop</h1>
+  <p>A systematic loop for reviewing medical manuscripts with AI reviewers (simulating high-impact journal editors), then fixing issues by priority — evidence-based, reproducible, privacy-aware.</p>
+  <div class="badges"><span class="badge">Academic writing</span><span class="badge">Peer-review simulation</span><span class="badge">Evidence-based</span></div>
+</header>
+
+<main>
+  <h2>Why this skill exists</h2>
+  <div class="card">
+    <p>Writing a manuscript is only half the battle — passing <strong>peer review</strong> is the other half. This skill encodes a proven workflow: use AI reviewers that <em>actually read your manuscript</em> and <em>verify numbers against your analysis outputs</em>, then fix issues by severity. It was refined through real Major Revision cycles on three medical papers (epidemiology, mediation analysis, prediction-model development).</p>
+  </div>
+
+  <h2>The loop</h2>
+  <div class="card">
+    <div class="step"><div class="step-num">1</div><div><strong>AI peer review</strong><br>One reviewer subagent per paper, reading the manuscript (python-docx), cross-checking every number against RDS/CSV outputs, and verifying references via PubMed — no fabricated opinions.</div></div>
+    <div class="step"><div class="step-num">2</div><div><strong>Priority-based fixing</strong><br>P0 data-integrity (impossible values, internal contradictions) → P1 methodology (reproducibility, missing comparators) → P2 formatting (citations, figures) → P3 language.</div></div>
+    <div class="step"><div class="step-num">3</div><div><strong>Honest recalculation</strong><br>Every new number (E-value, quartile ORs, DCA) is recomputed in R — never invented.</div></div>
+    <div class="step"><div class="step-num">4</div><div><strong>Submission packaging</strong><br>7-folder delivery structure with vector figures (SVG/PDF/PNG), cover letters, and graphical abstracts.</div></div>
+  </div>
+
+  <h2>Key pitfalls documented</h2>
+  <div class="card">
+    <ul>
+      <li>⚠️ DCA net benefit cannot exceed outcome prevalence — impossible values are data-integrity red flags</li>
+      <li>⚠️ Recalibrated probabilities must not be used to assess calibration (circularity)</li>
+      <li>⚠️ Prediction-model papers must report the full formula (z-score constants + intercept + lambda)</li>
+      <li>⚠️ Vancouver citations must follow first-appearance order — including citations inside tables and figure captions</li>
+      <li>⚠️ Same-source time-window validation ≠ true external validation (use "temporal validation")</li>
+      <li>⚠️ Shared-component mathematical coupling between exposure and outcome must be discussed</li>
+      <li>⚠️ Privacy: never publish user names, emails, or institution paths in public skill repos</li>
+    </ul>
+  </div>
+
+  <h2>Deliverable structure</h2>
+  <div class="card">
+    <pre style="background:#f8fafc;padding:14px;border-radius:6px;overflow-x:auto;"><code>交付_课题X/
+├── 01_原始数据/   (RDS/XPT/CSV)
+├── 02_R代码/      (all analysis scripts)
+├── 03_分析结果/   (results, reports)
+├── 04_图表_矢量/  (SVG + PDF + PNG)
+├── 05_论文投稿/   (manuscript + cover letter + graphical abstract)
+├── 06_审稿与修改/ (reviewer comments + fix log)
+└── 07_README/    (README.md)</code></pre>
+  </div>
+
+  <h2>Getting started</h2>
+  <div class="card">
+    <p>Read <code>SKILL.md</code> in this repository for the full workflow: trigger conditions, reviewer-prompt templates, fix checklists, and the verification checklist.</p>
+    <p style="margin-top:10px"><a href="SKILL.md">→ View SKILL.md</a> &nbsp;|&nbsp; <a href="README.md">→ View README.md</a></p>
+  </div>
+
+  <div class="warning">
+    <strong>Privacy note:</strong> This repository contains only methodological guidance. No personal data, real manuscript content, or institutional identifiers are included.
+  </div>
+</main>
+
+<footer>AI Review-Revision Loop · MIT License · Maintained by sushuqiong</footer>
+</body>
+</html>
